@@ -3,7 +3,9 @@
 ## in-game showroom
 https://www.youtube.com/watch?v=kSCgRFPpxUU
 
-###Usage
+![Demo](preview.png)
+
+## Usage
 ```lua
 Config.PoliceCars = {
     [`t20`] = true,
