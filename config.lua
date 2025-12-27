@@ -1,10 +1,5 @@
-# wiki-dashcam
+Config = {}
 
-## in-game showroom
-https://www.youtube.com/watch?v=kSCgRFPpxUU
-
-###Usage
-```lua
 Config.PoliceCars = {
     [`t20`] = true,
     [`npolvic`] = true,
@@ -13,4 +8,3 @@ Config.PoliceCars = {
     [`npolvette`] = true,
     [`npolstang`] = true,
 }
-```

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>basoken</title>
+<style>
+html, body {
+margin: 0; padding: 0;
+background: transparent; overflow: hidden;
+font-family: Arial, Helvetica, sans-serif;
+}
+#mirror {
+position: absolute;
+top: 10px; left: 50%;
+transform: translateX(-50%) translateY(-20px);
+width: 120px; height: auto;
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.5s ease, transform 0.5s ease;
+}
+#mirror.show {
+opacity: 1;
+transform: translateX(-50%) translateY(0);
+pointer-events: auto;
+}
+#mirror-bg {
+position: absolute;
+top: 100%;
+left: 50%;
+width: 350%;
+height: auto;
+pointer-events: none;
+transform: translateX(-50%);
+}
+.txt {
+position: absolute; width: 100%;
+text-align: center;
+color: #fff;
+text-shadow: 0 0 6px rgba(0,0,0,.9), 0 0 10px rgba(0,0,0,.7);
+font-weight: 700;
+letter-spacing: .5px;
+user-select: none; pointer-events: none;
+font-size: 20px;
+}
+#info {
+position: absolute;
+top: 105px;
+width: 100%;
+display: flex;
+justify-content: center;
+gap: 40px;
+font-size: 26px;
+}
+#plate, #model {
+flex: none;
+}
+#speed {
+top: 150px;
+font-size: 27px;
+}
+</style>
+</head>
+<body>
+<div id="mirror">
+<img id="mirror-bg" src="img/ayna.png" alt="ayna">
+<div id="info" class="txt">
+<div id="plate">N/A</div>
+<div id="model">N/A</div>
+</div>
+<div id="speed" class="txt">N/A</div>
+</div>
+<script>
+window.addEventListener("message", (e) => {
+const data = e.data || {};
+const mirror = document.getElementById("mirror");
+if (data.action === "updateMirror") {
+document.getElementById("plate").textContent = data.plate || "N/A";
+document.getElementById("model").textContent = data.model || "N/A";
+document.getElementById("speed").textContent = data.speed || "N/A";
+}
+if (data.action === "toggleDashcam") {
+if (data.state) {
+mirror.classList.add("show");
+} else {
+mirror.classList.remove("show");
+}
+}
+});
+</script>
+</body>
+</html>
